@@ -1,9 +1,10 @@
 #include "Partition.h"
 #include <vector>
+#include <iostream>
 
 Partition::Partition(int max)
 {
-    //Initiailize the partition data structure as outlined in Valmari-Lehtinen's paper
+    //Initialize the partition data structure as outlined in Valmari-Lehtinen's paper
 
     sets = 1; // only one set initially
 
@@ -19,6 +20,14 @@ Partition::Partition(int max)
     first = std::vector<int>(1, 0); //set 0 (0-indexing) starts at index 0 in elems
     mid = std::vector<int>(1, 0);
     end = std::vector<int>(max, 0);
+}
+
+int Partition::get_sets(){
+    return sets;
+}
+
+int Partition::get_max(){
+    return max;
 }
 
 int Partition::size(int s){
@@ -69,4 +78,17 @@ int Partition::split(int s){
 
 bool Partition::no_marks(int s){
     return mid[s] == first[s];
+}
+
+void Partition::pretty_print(){
+    for(int i = 0; i < sets; i++){
+        std::cout << "Set " << i << ":";
+        std::cout << "{";
+        int elem = get_first(i);
+        while(elem != -1){
+            std::cout << elem << " ";
+            elem = get_next(elem);
+        }
+        std::cout << "}" << std::endl;
+    }
 }
