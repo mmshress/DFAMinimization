@@ -1,3 +1,5 @@
+#ifndef PARTITION_H
+#define PARTITION_H
 #include <vector>
 
 class Partition
@@ -54,3 +56,4 @@ class Partition
     
     Partition(int max); //default constructor for each partition instance
 };
+#endif

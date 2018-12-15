@@ -5,6 +5,7 @@
 Partition::Partition(int max)
 {
     //Initialize the partition data structure as outlined in Valmari-Lehtinen's paper
+    this->max = max;
 
     sets = 1; // only one set initially
 
@@ -19,7 +20,7 @@ Partition::Partition(int max)
 
     first = std::vector<int>(1, 0); //set 0 (0-indexing) starts at index 0 in elems
     mid = std::vector<int>(1, 0);
-    end = std::vector<int>(max, 0);
+    end = std::vector<int>(1, max);
 }
 
 int Partition::get_sets(){
@@ -56,7 +57,7 @@ int Partition::mark(int e){
         loc[elems[l]] = l;
         elems[m] = e;
         loc[e] = m;
-        mid[s] = m + 1;
+        mid[s]++;
     }
 }
 
